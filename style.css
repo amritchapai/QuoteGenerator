@@ -2,3 +2,48 @@
   --background: white;
   --text: black;
 }
+
+.dark {
+  --background: black;
+  --text: white;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.mode-switch {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.switch {
+  padding: 0px 2px;
+  display: inline-block;
+  height: 20px;
+  width: 50px;
+  border: 2px solid rgb(138, 136, 136);
+  border-radius: 15px;
+  display: flex;
+  place-items: center;
+  cursor: pointer;
+}
+
+.slider {
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider-slide {
+  transform: translateX(32px);
+  background-color: black;
+  display: hidden;
+}
