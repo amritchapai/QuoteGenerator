@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <link href="style.css" rel="stylesheet" />
     <title>Document</title>
   </head>
@@ -15,15 +21,18 @@
     </div>
     <header class="title">Quote Generator</header>
     <main>
-      <div class="categories">
+      <div class="custom-section">
         <select class="category-select">
           <option value="1">Science</option>
           <option value="2">Sports</option>
           <option value="3">Nepali</option>
         </select>
-        <label for="font_size">Font size<input type="range" /></label>
+        <label class="font-label" for="font_size"
+          >Font size(<span id="font-size">16</span>px) :
+          <input type="range" id="range" min="6" max="30" value="16"
+        /></label>
       </div>
-      <div class="quote container">
+      <div class="quote-container" id="quote-container">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis
         maxime repellat et unde. Omnis, quod?
       </div>

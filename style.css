@@ -1,6 +1,11 @@
 :root {
-  --background: white;
+  --background: rgb(242, 242, 242);
   --text: black;
+}
+
+html {
+  padding: 0;
+  margin: 0;
 }
 
 .dark {
@@ -11,6 +16,12 @@
 body {
   background-color: var(--background);
   color: var(--text);
+  font-family: "Montserrat", sans-serif;
+  padding: 4rem;
+  place-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .mode-switch {
@@ -20,6 +31,7 @@ body {
   display: flex;
   align-items: center;
   gap: 3px;
+  font-weight: 300;
 }
 
 .switch {
@@ -46,4 +58,88 @@ body {
   transform: translateX(32px);
   background-color: black;
   display: hidden;
+}
+
+.title {
+  font-size: 40px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 650;
+  color: rgb(109, 109, 243);
+}
+
+main {
+  width: 650px;
+}
+
+.custom-section {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text);
+}
+
+body.dark .custom-section {
+  background-color: rgb(27, 53, 71);
+}
+
+.category-select {
+  padding: 0.8rem 1.8rem;
+  color: var(--text);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid rgb(223, 223, 223);
+  outline: none;
+}
+
+.category-select:focus {
+  border-color: rgb(89, 89, 247);
+}
+
+body.dark .category-select {
+  background-color: rgb(27, 53, 71);
+}
+
+.font-label {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  position: relative;
+  appearance: none;
+  background-color: rgb(206, 206, 206);
+  border-radius: 10px;
+  height: 7px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  position: relative;
+  background-color: rgb(109, 109, 243);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  background-color: rgb(89, 89, 247);
+}
+
+input[type="range"]::before {
+  content: "6";
+  color: var(--text);
+  position: absolute;
+  top: 10px;
+}
+input[type="range"]::after {
+  content: "30";
+  color: var(--text);
+  position: absolute;
+  right: 0px;
+  top: 10px;
 }
