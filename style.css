@@ -53,14 +53,14 @@ body {
 .slider {
   width: 18px;
   height: 18px;
-  background-color: white;
+  background-color: black;
   border-radius: 50%;
   transition: transform 0.5s ease-in-out;
 }
 
 .slider-slide {
   transform: translateX(32px);
-  background-color: black;
+  background-color: white;
 }
 
 .title {
