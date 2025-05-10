@@ -86,6 +86,7 @@ main {
   justify-content: space-between;
   color: var(--text);
   box-sizing: border-box;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
   flex-wrap: wrap;
   gap: 15px;
 }
@@ -182,6 +183,7 @@ input[type="range"]::after {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
 }
 .quote-container::before {
   position: absolute;
