@@ -6,6 +6,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
@@ -22,7 +26,8 @@
     <header class="title">Quote Generator</header>
     <main>
       <div class="custom-section">
-        <select class="category-select">
+        <select class="category-select" value="0" id="category">
+          <option value="0">All Category</option>
           <option value="1">Science</option>
           <option value="2">Sports</option>
           <option value="3">Nepali</option>
@@ -33,13 +38,21 @@
         /></label>
       </div>
       <div class="quote-container">
+        <div class="arrow-left" id="arrow-left">
+          <i class="fa-solid fa-arrow-left"></i>
+        </div>
+
         <p class="quote" id="quote">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo in
           voluptates non, illo quae molestias.
         </p>
+        <div class="arrow-right" id="arrow-right">
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+        <!-- <img src="rightArrow.svg"  /> -->
       </div>
       <button class="generator" id="generator">Random Quote</button>
     </main>
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
