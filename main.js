@@ -10,15 +10,15 @@ toggle.addEventListener("click", () => {
 //for changing the font-size
 const range = document.getElementById("range");
 range.addEventListener("input", () => {
-  console.log(range.value);
   const size = range.value;
   document.getElementById("font-size").textContent = size;
   document.getElementById("quote").style.fontSize = size + "px";
 });
 
+//all about quote container changing and transitions
 const quote = document.getElementById("quote");
-
 const category = document.getElementById("category");
+const generatorButton = document.getElementById("generator");
 let index = 0;
 let filteredData = [];
 category.value = localStorage.getItem("category");
@@ -26,6 +26,7 @@ if (!category.value) {
   category.value = "all";
 }
 
+//for filtering data
 const filterData = () => {
   if (category.value === "all") {
     filteredData = sampleData;
@@ -38,31 +39,34 @@ const filterData = () => {
   quote.textContent = filteredData[index]?.quote;
 };
 
+//for changing category
 category.addEventListener("input", () => {
-  console.log("triggered");
   localStorage.setItem("category", category.value);
   filterData();
 });
 
+//listener for left
 document.getElementById("arrow-left").addEventListener("click", () => {
   index--;
   if (index === -1) {
     index = filteredData.length - 1;
   }
-  console.log(index);
   slideTransition(filteredData[index]?.quote, "left");
 });
+
+//listerner for right
 document.getElementById("arrow-right").addEventListener("click", () => {
   index = (index + 1) % filteredData.length;
   slideTransition(filteredData[index]?.quote, "right");
 });
 
-const generatorButton = document.getElementById("generator");
+//random index generation
 generatorButton.addEventListener("click", () => {
   index = Math.floor(Math.random() * filteredData.length);
   fadeTransition(filteredData[index]?.quote);
 });
 
+//fading in random
 const fadeTransition = (newQuote) => {
   quote.style.opacity = 0;
 
@@ -72,6 +76,7 @@ const fadeTransition = (newQuote) => {
   }, 300);
 };
 
+//sliding for arrows
 const slideTransition = (newQuote, direction) => {
   quote.classList.add(
     direction === "left" ? "slide-out-left" : "slide-out-right"
