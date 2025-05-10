@@ -191,7 +191,7 @@ body.dark .quote-container {
   width: fit-content;
   aspect-ratio: square;
   padding: 5px;
-  border: 3px solid var(--text);
+  border: 3px solid rgb(109, 109, 243);
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -202,6 +202,7 @@ body.dark .quote-container {
 
 i {
   font-size: 40px;
+  color: rgb(109, 109, 243);
 }
 
 .arrow-left {
@@ -212,6 +213,67 @@ i {
 }
 .quote {
   font-size: 26px;
+  transition: opacity 0.5s ease;
+}
+
+.slide-out-left {
+  animation: slideOutLeft 0.4s forwards;
+}
+
+.slide-out-right {
+  animation: slideOutRight 0.4s forwards;
+}
+
+.slide-from-left {
+  animation: slideInLeft 0.4s forwards;
+}
+
+.slide-from-right {
+  animation: slideInRight 0.4s forwards;
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-80px);
+    opacity: 0;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(80px);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(80px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(-80px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .generator {

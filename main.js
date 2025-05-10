@@ -16,17 +16,77 @@ range.addEventListener("input", () => {
   document.getElementById("quote").style.fontSize = size + "px";
 });
 
+const quote = document.getElementById("quote");
+
 const category = document.getElementById("category");
-console.log(category.value);
+let index = 0;
+let filteredData = [];
+category.value = localStorage.getItem("category");
+if (!category.value) {
+  category.value = "all";
+}
+
+const filterData = () => {
+  if (category.value === "all") {
+    filteredData = sampleData;
+  } else {
+    filteredData = sampleData.filter(
+      (item) => item.category === category.value
+    );
+  }
+  index = 0;
+  quote.textContent = filteredData[index]?.quote;
+};
+
 category.addEventListener("input", () => {
-  console.log(category.value);
+  console.log("triggered");
+  localStorage.setItem("category", category.value);
+  filterData();
+});
+
+document.getElementById("arrow-left").addEventListener("click", () => {
+  index--;
+  if (index === -1) {
+    index = filteredData.length - 1;
+  }
+  console.log(index);
+  slideTransition(filteredData[index]?.quote, "left");
+});
+document.getElementById("arrow-right").addEventListener("click", () => {
+  index = (index + 1) % filteredData.length;
+  slideTransition(filteredData[index]?.quote, "right");
 });
 
 const generatorButton = document.getElementById("generator");
 generatorButton.addEventListener("click", () => {
-  const quote = document.getElementById("quote");
-  const randomIndex = Math.floor(Math.random() * sampleData.length);
-  console.log(randomIndex);
-  console.log(sampleData[randomIndex].quote);
-  quote.textContent = sampleData[randomIndex].quote;
+  index = Math.floor(Math.random() * filteredData.length);
+  fadeTransition(filteredData[index]?.quote);
 });
+
+const fadeTransition = (newQuote) => {
+  quote.style.opacity = 0;
+
+  setTimeout(() => {
+    quote.textContent = newQuote;
+    quote.style.opacity = 1;
+  }, 300);
+};
+
+const slideTransition = (newQuote, direction) => {
+  quote.classList.add(
+    direction === "left" ? "slide-out-left" : "slide-out-right"
+  );
+
+  setTimeout(() => {
+    quote.textContent = newQuote;
+    quote.classList.remove("slide-out-right", "slide-out-left");
+    quote.classList.add(
+      direction === "left" ? "slide-from-left" : "slide-from-right"
+    );
+    setTimeout(() => {
+      quote.classList.remove("slide-from-left", "slide-from-right");
+    }, 400);
+  }, 400);
+};
+
+filterData();
